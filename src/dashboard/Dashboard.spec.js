@@ -27,14 +27,13 @@ describe('<Dashboard/>', () => {
         it('should lock the gate', () => {
             const spy = jest.fn();
 
-            const { getByText } = render(<Controls toggleLocked={spy}/>)
+            const { getByText } = render(<Controls toggleLocked={spy} toggleClosed={spy}/>)
             const closeBtn = getByText(/close gate/i)
 
             fireEvent.click(closeBtn);
     
             const lockBtn = getByText(/lock gate/i);
             fireEvent.click(lockBtn);
-            spy();
             expect(spy).toHaveBeenCalledTimes(1);
         })
     })
